@@ -1,0 +1,63 @@
+\documentclass[plain]{sigplanconf}
+\usepackage{balance} % For balanced columns on the last page
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[
+bookmarksopen,
+bookmarksdepth=2,
+breaklinks=true
+]{hyperref}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\makeatletter
+\def\@copyrightspace{\relax}
+\makeatother
+\begin{document}
+	\title{Community Networks QoS Monitoring System}
+	\authorinfo{Meluleki Dube}
+	{Department of Computer Science\linebreak University of Cape Town\linebreak South Africa}
+	{}
+	\authorinfo{David Kheri}
+	{Department of Computer Science\linebreak University of Cape Town\linebreak South Africa}
+	{}
+	\authorinfo{Clayton Sibanda}
+	{Department of Computer Science\linebreak University of Cape Town\linebreak South Africa}
+	{}
+	\maketitle
+	\begin{abstract}
+	
+	\end{abstract}
+	\begin{CCSXML}
+		<ccs2012>
+		<concept>
+		<concept_id>10003033.10003079.10011704</concept_id>
+		<concept_desc>Networks~Network measurement</concept_desc>
+		<concept_significance>100</concept_significance>
+		</concept>
+		</ccs2012>
+	\end{CCSXML}
+	\ccsdesc[100]{Networks~Network measurement}
+	\keywords
+	Community Networks, Data-driven Networking, Quality of Services
+	
+	\input{sections/introduction}
+	\input{sections/project_description}
+	\input{sections/project_statment}
+	\input{sections/procedures_and_methods}
+	\input{sections/ethical_legal}
+	\input{sections/related_works}
+	\input{sections/anticipated_outcomes}
+	\input{sections/project_plan}
+	\nocite{*}
+	\bibliographystyle{abbrvnat}
+	\bibliography{references}
+	\input{sections/appendix}
+\end{document}
