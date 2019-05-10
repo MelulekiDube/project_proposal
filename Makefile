@@ -11,7 +11,7 @@ TEX_OPT = -halt-on-error -output-directory $(BUILDDIR)
 compile: $(OUTPUT)
 
 clean:
-	rm -rf $(OUTPUT) $(BUILDDIR)
+	rm -rf $(OUTPUT) $(BUILDDIR) *.gz *.out *.bbl *.log *.aux *.bblg
 
 $(OUTPUT): $(SRC) $(INCLUDE_SRC) $(DIAGRAM_OBJS) | $(BUILDDIR)
 	$(COMPILER) $(TEX_OPT) $<
