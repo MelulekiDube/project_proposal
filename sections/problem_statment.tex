@@ -5,7 +5,15 @@ The aim of this project is to provide researchers and operators of the network w
 The main question that we will be seeking to answer with the project are as follows:
 \begin{itemize}
 	\item It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-	\item It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of 
+	\item We want to look into the efficiency of different mechanisms for collections of measurement data. We will thus look into the different systems and compare these to determine the most efficient system if any. We will look into two main techniques for network measurement collection and these are, push-pull, scheduling and polling. 
+	
+	Push pull is a technique for measuring data where we have two entities in the system say the server and a mobile phone that we are collecting data from. Pulling then in this case means that the server requests for data from the mobile phone while pushing refers to the mobile phone then sending the data to the server when certain conditions that they are given are met \cite{article}. Polling in this case means that the we have devices which are collecting data also known as data producers always listening at fixed time intervals for new changes in the networks to record measurements and send data to the data consumers. That it constantly and repeatedly checks to see if anything in the network has changed and if so, run collects extra data that it will then send to the server. Scheduling means that we will have scheduled times for collecting  data and therefore the data producers will only collect measurements in the network on the scheduled times. 
+	
+	For each of the mentioned measurements collection technique we will measure their efficiency in terms of the following:
+	\begin{itemize}
+		\item How the network is affected by the measurements data collection. Taking network measurements will mean that we are utilizing the network links for collecting data.This can tend to have negative impacts on the network as there will be much more traffic on the network that is caused by these measurements. Therefore, the most efficient system will be one that causes minimum traffic on the network.
+		\item Efficiency will also include a look into how the collection of network measurements will affect the user's mobile phones in terms of power consumption. Shepard, et al. suggested that interrupt driven logging was more efficient that polling systems \cite{Shepard:2011:LMW:1925019.1925023}. We will thus in this research look into how inefficient the polling system and compare it to the results that they found for interrupt driven logging.
+	\end{itemize}
 \end{itemize}
 
 \subsection{Requirements}
