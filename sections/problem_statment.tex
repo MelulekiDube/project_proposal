@@ -1,26 +1,40 @@
 \section{Problem Statement}
-\subsection{Aims and Research Question}
-The aim of this project is to provide porate feature selection mechanisms for detecting and correlating factors impacting QoS.
-researchers and operators of the network with a tool they can use to perform measurements on the community network, also with the ability to schedule collection of network data at specified times. The project also aims to provide end users with the ability to view their data usage accurately in a very user friendly manner. All the functionality discussed previously will be collectively packaged together in a easy to use visualization tool. The ultimate goal of the application is to use the data collected enhance quality of service, prevent attack on the network as well as contribute further to the research in community networks.
+\subsection{Aims and Research Questions}
+Community networks are decentralized communication networks which are large scale and self organized, built by the people for the people\cite{Braem:2013:CRC:2500098.2500108}. These networks provide a sustainable solution to address the connectivity gaps that exist in underserved urban, remote, and rural areas around the world\cite{Braem:2015:AEQ:2830629.2830639}. Prominent Examples include Zenzeleni, Rhizomatica and Inethi which is our case study for the project.  
 
-The main questions that we will be seeking to answer with the project are as follows:
-\begin{itemize}
-	\item Investigate the effect of co-design process for network based web application interface through usability evaluation 
-	\item How do different measurement collection techniques compare to each other in terms of power efficiency and network efficiency. Where network efficiency focuses on the effects of collecting measurements on the network. Power efficiency looks into the effects on mobile phone power utilization of the measurement collection technique used.
-\end{itemize}
+Inethi which is a community network seeks to work with communities to co-design a content sharing and services platform for community wireless networks\cite{inethi}. Its goal is to build more resilient communities by using information technologies to help its users tap into local creativity, innovation, and other resources, with an eye towards improvement of socio-economic status\cite{inethi}.
+
+The aim of this project is to provide researchers and operators of the network with a tool they can use to perform measurements on the community network, also with the ability to schedule collection of network data at specified times. The project also aims to provide end users with the ability to view their data usage accurately in a very user friendly manner. All the functionality discussed previously will be collectively packaged together with a easy to use visual interface. The ultimate goal of the application is to use the data collected enhance quality of service, prevent attack on the network as well as contribute further to the research in community networks.
 \subsection{Requirements}
 Our research takes on the form of a software engineering project with members of the Inethi community network as the primary user of the application. The application needs to meet their requirements for it to be of use.
-\subsubsection{research questions}
-Requirements of the application are as follows 
-\begin{itemize}
-	\item Provide functionality to perform measurements on the network based on different user-defined fields such latency, signal strength or throughput.
-	
-	\item Enable the scheduling of network measurements either on demand or at specified time.  
-	
+Functional requirements of the application are as follows 
+\begin{itemize} %to be presented as from the users perspective.
+	\item Provide functionality to perform measurements on the network based on different user-defined fields such latency, signal strength or throughput. %Allow researcher to perfrom measurements. Make it come from the users point of view
+	\item Enable the scheduling of network measurements either on demand or at specified time. %change to schedule network measuremetns.
 	\item Detection of anomalies in the network based on the analysis of the data collected in the network.
-	
-	\item Creation of user profiles which can be use to track their data usage in the network. 
-	
+	%Detection of network anomalies due to any of the following network misconfiguration or network attacks, network failure.
+	\item Creation of user profiles which can be use to track their data usage in the network.
+	%Maintain user profiles/ Allow users to maintain user profiles and track their network usage
 	\item Provide data visualization to both end users in the viewing of their user profiles as well to network operators in the monitoring of the network.
+	%Tp end user network managers and network operatos.
 \end{itemize}
+Non-functional requirements for the application include:
+\begin{itemize}
+	\item Should be secure in terms of the user data recorded.
+	\item Should be reliable .
+	\item Should be available for users all the time.
+	\item Should  give correct results and graphs.
+	\item SHould be easily usable for all different users.
+\end{itemize}
+%non funtion 
 Thorough testing and prototyping is paramount, to ensure we meet the requirements, and to provide Inethi with a tool that they are satisfied with.
+%include non-functional requrements in this space.
+In providing the above requirements we will be trying to answer the following questions:
+\begin{itemize} %add quesiton on what the question looks at.
+	%put the qurstion to be in italics.
+	%question should end in questions marks
+	\item How effective are different measurement scheduling mechanisms on data collection 
+	\item How efficient different network probing mechanisms are in network analysis 
+	\item Investigate the effectiveness of co-design process for network based web application interface through usability evaluation %put question in itelics
+	\item How do different measurement collection techniques compare to each other in terms of power efficiency and network efficiency. Where network efficiency focuses on the effects of collecting measurements on the network. Power efficiency looks into the effects on mobile phone power utilization of the measurement collection technique used.
+\end{itemize}

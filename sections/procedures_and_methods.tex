@@ -1,21 +1,26 @@
 \section{Procedure And Methods}
 \subsection{System Architecture}
+%there has to be discussion of the overall system.
+%talk in general sense what the project is about.
 \begin{figure*}
+	%diagram should include mentions for the things we need
+	%framework for the collector, visualizor and ochastrator.
+	%what the framewrks talk to the dabase through
+	%talking to the mobile server.
+	%database also needed.
 	\begin{center}
 		\includegraphics[width=1\linewidth]{res/system.jpeg}
 	\end{center}
 	\caption{Showing the system components and the interaction direction for the System.}
 	\label{fig-ffsm}
 \end{figure*}
-\subsection{Development Procedure}
+\subsubsection{Measurement Orchestration}
+In terms of orchestration, once measurements are scheduled a job will be stored on the web server with information on the measurement experiment to be run based on user-defined fields such as a number of nodes as well as parameters to measure.When the scheduled time is reached, the Server will send push notifications to online nodes with information on what parameters to be measured. Once the data is collected it will be sent to database 2 ready for viewing through the web interface.
+\subsubsection{Network Measurement Collectors}
 We need to develop a phone application that will be the means of collecting measurements for the internet metrics. We have decided to build an android application for the phones and tablets as Android is open and requires less resources to get started. According to \cite{statcounter_global_stats}, Android currently has 35\% of the operating systems market. This shows how popular amongst users android is and thus will be a good platform to consider to build the application for first. 
 \paragraph{}
-The application that we will be building will be extending the MobiPerf application which is built in Java \cite{m-lab}. Since Android Development is also done in Java it also adds to why we will be focusing on developing for android as it is easier to extend an already existing platform compared to creating one form the beginning.
-
-\paragraph{}
-For orchestration,once tests are scheduled the server will initiate jobs to online nodes in the network.Network metrics will be measured using the smartphone application explained above and the results will be piped to the database for storage ready for analysis and displayed by the visualizer.    
-
-\subsection{Visualizer}
+The application that we will be building will be extending the MobiPerf application which is built in Java \cite{m-lab}. Since Android Development is also done in Java it also adds to why we will be focusing on developing for android as it is easier to extend an already existing platform compared to creating one form the beginning. The mobile phone are the mobile clients shown on Figure 1. These clients will be talking to the HTTP server to send data to the database or to be triggered to collect network measurements.
+\subsubsection{Visualizer}
 To design the visualiser, a co-design process will adopted. During the co-design process, about three workshops  will be conducted. A number of users from the Ocean View community will be invited to take part in these workshops. Different Human Computer Interaction methods will be employed to achieve the desired user experience. These will involve both end users and the team taking part in designing and come up with ideas. Co-design is sometimes called participatory design which is defined by \cite{ctx2100202260004041} as a set of theories,practices and studies related to end-users as full participants in activities leading to software products. Thus the reason why we adopted this method as we want to involve users in the design process.
 \paragraph{}
 The visualiser for this project will be implemented as a full stack application comprising of a rich front-end and a well optimised back end. Before building the app, the team will interview potential users from the community network to gather user requirements. The interviews will be done based on a paper prototype done prior to the interviews.
