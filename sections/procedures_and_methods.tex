@@ -2,44 +2,42 @@
 \subsection{System Architecture}
 \begin{figure*}
 	\begin{center}
-		\includegraphics[width=1\linewidth]{res/system.jpeg}
+		\includegraphics[width=1\linewidth]{res/system.png}
 	\end{center}
 	\caption{Showing the system overview, different components making the system and the communication directions between these components in the systems.}
 	\label{figure:system}
 \end{figure*}
-Figure ~\ref{figure:system} shows the system over, the components of the system and how everything will fit together. The lines from components are communication lines and suggest the communication direction between the comments. Following is a mapping for each of the line number and the communication information that is sent via that line:
+Figure ~\ref{figure:system} shows the system over, the components of the system and how everything will fit together. The lines from components are communication lines and suggest the communication direction between the comments. 
+\paragraph{}
+Following is a mapping for each of the line number and the communication information that is sent via that line:
 \begin{enumerate}
-	\item Request sent from measurement initiator to orchestrator. This is the request for the orchestrator to run measurements on the network. This tool will be useful for researchers who want to carry out measurements on the network for further analysis.
-	\item Request sent from data visualizer to the request handler for the data that the visualizer is going to be rendering.
-	\item Request from orchestrator to Request handler to so that the request handler can summon the right components for starting network measurement collection process.
-	\item In the event that the request handler received a request to run measurement on the network this request has to be sent to a Job scheduler which will add the need to perform measurements on the job queue assuming there are other jobs that will be waiting to be done.
-	\item If on the other hand the request is to get data to render on the visualizer, this shows that the request handler needs to send this request to the Database querier to get the data from the database.
-	\item This communication link is for queries that are going to be sent t the database system. The information on the queries will specify the database to use and what type of data we are looking for. 
-	\item This is the response from the database to be sent to the visualizer.
-	\item This line shows the data that comes from a data collector that need to be added to the database through the database query handler. 
-	\item From the job scheduler, the job has to be sent to the Job queue so that when ready the job will be sent to the collector via 10 so the collector can initiate the probes to collect measurements.
-	\item Shows the job being transfered to the collector from the job queue.
-	\item The collector sends the measurement probes alerting them to start collecting measurements.
-	\item When the probes are done collecting measurements based on the technique used they will need to somehow send the data to the database. This line will be used to send the data to the collector which will send the data to the database via 8.
-	\item Sometimes when the data from the collector has arrived, further measurements may need to be taken for them to make sense,  For this, the network analyzer will have to schedule a new job for collecting measurement.
-	\item After the network analyzer get the data it will send the data to the database via this line.
-	\item The Database Query handler responds back to the web interface via this line to the response handler.
-	\item This line is shows communication from the response handler to the data Visualizer.
-\end{enumerate}
+	\item  This is the request to the request handler to decide to send it to the query handler or the orchestrator.
+	\item This is the message sent to the orchestrator to data collection.
+	\item Database query sent from request handler to the database to get data from the database.
+	\item Data returned from the database to the response handler.
+	\item Database query sent  to the database to the query handler to retrieve data.
+	\item Data returned from the database to the query handler.
+	\item Results of data analysed by the analyser.
+	\item Data sent from the collector to the data analyser..
+	\item Data returned from the data collection points to the collector.
+	\item Request sent from the orchestrator to the collection points to initiate collection of data.
+	\item This is the response sent from the response handler to the data visualizer to display the data obtained from the database.
+	
+	\end{enumerate}
 The components of the system as seen from the figure ~\ref{figure:system} are:
 \paragraph{\textit{Framework Server}}
-This is the basis of the application. Other components like the orchestrator and the Collector rely on the server for performing well. The server provides communication to the database system, it also provides a means for scheduling measurements requested via the orchestrator as well as keeping track and ensuring that the jobs are sent to the collector for starting. It also consists of other tools like the request handler which is the communication point from the web interface, the job scheduler that schedules measurement collection jobs for researchers so as not to flood the network with measurement data. it also has a job queue where the scheduled jobs are kept and selected for running at appropriate times. Lastly it provided a component for handling the logic for communicating with the Databases. The reason for having only one central point for database communication is so that if we decided to change the database used, the only aspect form the system that needs to be modified is just this component. We also have a response handler which handles sends responses from the database to the users that they are associated with in the web interface. Lastly, we will have an analyzer of he network data which receives the data from the collector and performs analysis and then saves the data in the database. This part is where the machine learning algorithms can be implemented for making decisions and also adding more jobs on the scheduler.
+This is the base of the application. Other components like the orchestrator and the Collector rely on the server. The server provides communication to the database system, it also provides a means for scheduling measurements requested via the orchestrator as well as keeping track and ensuring that the jobs are sent to the collector for starting. It also consists of other tools like the request handler which is the communication point from the web interface. Lastly it provided a component for handling the logic for communicating with the Databases. The reason for having only one central point for database communication is so that if we decided to change the database used, the only part of the system that needs to be modified is just this component. We also have a response handler which handles and sends results from the database to users that they are associated with in the web interface. Lastly, we will have an analyser of he network data which receives the data from the collector and performs analysis and then saves the data in the database. This part is where the machine learning algorithms can be implemented for making decisions and also adding more jobs on the scheduler.
 
 \paragraph{\textit{Web Interface}}
 This consists of the Measurement initiator and the Visualizer tool. From this the users are able to view the network activities in form of graphs. The users are able to also view their profiles which will also be indicated by the visualizer. The measurement initiator is a tool for researchers who want to run network measurements on the network.
 
 \paragraph{\textit{Orchestrator and Collector}}
-This are two services that will be running on top of the framework server. These services are responsible for accepting requests from researchers as well as well as initiating measurements form phones and collecting the data from probes.
+These are the two services that run on top of the framework server. They are responsible for accepting requests from researchers as well as initiating measurements form phones and collecting data from probes.
 
 \paragraph{\textit{Data Collection points}} This consists mobile phones running a Mobiperf extended application. These are where we are measuring the network measurements that will be displayed by the visualizer.
 \paragraph{\textit{Database}} Made up of two separate databases for storing measurement data and the other for storing user data.
 \subsubsection{Measurement Orchestration}
-In terms of orchestration, once measurements are scheduled a job will be stored on the web server with information on the measurement experiment to be run based on user-defined fields such as a number of nodes as well as parameters to measure.When the scheduled time is reached, the Server will send push notifications to online nodes with information on what parameters to be measured. Once the data is collected it will be sent to database 2 ready for viewing through the web interface.
+In terms of orchestration, once measurements are scheduled a job will be stored on the web server with information on the measurement experiment to be run based on user-defined fields such as a number of nodes as well as parameters to measure.When the scheduled time is reached, the Server will send push notifications to online nodes with information on what parameters to be measured. Once the data is collected it will be sent to the measurement database.
 \subsubsection{Network Measurement Collectors}
 We need to develop a phone application that will be the means of collecting measurements for the internet metrics. We have decided to build an android application for the phones and tablets as Android is open and requires less resources to get started. According to \cite{statcounter_global_stats}, Android currently has 35\% of the operating systems market. This shows how popular amongst users android is and thus will be a good platform to consider to build the application for first. 
 \paragraph{}
